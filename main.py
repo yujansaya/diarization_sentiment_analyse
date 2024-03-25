@@ -5,12 +5,11 @@ from diarisation import SpeakerDiarizer
 from openai import OpenAI
 from concurrent.futures import ThreadPoolExecutor
 
-#os.system("pip install git+https://github.com/openai/whisper.git")
 # Set up OpenAI API key
 OPENAI_API_KEY = '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'
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-#os.environ["PATH"] += os.pathsep + f'/Users/zhansayayussupova/PycharmProjects/alindor/'
+os.environ["PATH"] += os.pathsep + f'YOUR ABSOLUTE PATH TO FFMPEG FILE'
 
 app = Flask(__name__)
 
