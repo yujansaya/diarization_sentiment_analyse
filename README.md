@@ -42,3 +42,18 @@ python main.py
 * OpenAI API: Used for sentiment analysis.
 * NumPy: A library for numerical computing.
 * scikit-learn: A machine learning library for Python.
+
+## Final thoughts
+
+It was a very interesting assignment. Unfortunately, I have used all free credits in Google Cloud for my previous projects (from different emails, ouch). But I would definitely deploy it on App engine, amending the existing code by adding google cloud storage client and bucket for user uploads.
+The main challenge was that I had several assignments to be done within almost the same timeframe. But I managed my time accordingly.
+The problem that I faced is with speechbrain library, it was giving me the error that no library was imported. But it turned out the problem was the new version of speechbrain (i.e. >= 1.0.0) and the pyannote importing from speechbrain.inference for version 1.0 or higher, and fallbacks to speechbrain.pretrained. For that reason I pinned the speechbrain version in requirements.txt. Although while testing I was using version 1 and ammended pyannote library on my local machine.
+
+Upon finishing the project, I reflected on the following points:
+
+* Performance Optimization: Consider optimizing the application for better performance, such as by optimizing code execution, improving concurrency, or implementing caching mechanisms.
+
+* User Experience Enhancements: Enhance the user experience by adding features like real-time progress updates during audio processing, better error handling, or interactive visualizations for analysis results.
+
+* Scalability and Deployment: Think about strategies for scaling the application, such as deploying it to scalable cloud platforms like Google App Engine or Kubernetes for handling increased user traffic.
+
