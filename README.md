@@ -4,6 +4,10 @@ This project provides a web application for audio diarization and sentiment anal
 ## Installation
 Before running the application, ensure you have Python installed on your system. Additionally, install the required Python packages using pip. The required packages are listed in requirements.txt.
 As well there is archived ffmpeg file, please unzip it (if you are using Mac). Other wise you coukd download the file from [this link](https://ffbinaries.com/downloads). 
+And please remember to change the path to the ffmpeg file in main.py.
+```console
+os.environ["PATH"] += os.pathsep + f'YOUR ABSOLUTE PATH TO FFMPEG FILE'
+```
 
 ## Usage
 1. Clone this repository to your local machine:
