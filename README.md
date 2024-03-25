@@ -1,8 +1,9 @@
 # Audio Diarization and Sentiment Analysis
-This project provides a web application for audio diarization and sentiment analysis of conversations. Audio diarization is the process of segmenting and labeling an audio recording based on speaker identities, while sentiment analysis aims to extract sentiment or psychological insights from the conversation. This repository contains Python code utilizing Flask, Google Speech Recognition API, OpenAI API, and Pyannote to achieve these functionalities.
+This project provides a web application for audio diarization and sentiment analysis of conversations. Audio diarization is the process of segmenting and labeling an audio recording based on speaker identities, while sentiment analysis aims to extract sentiment or psychological insights from the conversation. This repository contains Python code utilizing Flask, Whisper API, OpenAI API, and Pyannote to achieve these functionalities.
 
 ## Installation
 Before running the application, ensure you have Python installed on your system. Additionally, install the required Python packages using pip. The required packages are listed in requirements.txt.
+As well there is archived ffmpeg file, please unzip it (if you are using Mac). Other wise you coukd download the file from [this link](https://ffbinaries.com/downloads). 
 
 ## Usage
 1. Clone this repository to your local machine:
