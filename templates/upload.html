@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        #uploadProgress {
+            display: none; /* Hide progress bar by default */
+        }
+    </style>
+</head>
+<body>
 
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="text-center">File Upload</h2>
+            <form id="uploadForm" action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="file" class="form-control-file" name="file" id="file">
+                </div>
+                <div class="form-group">
+                    <progress id="uploadProgress" value="0" max="100"></progress> <!-- Progress bar -->
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="uploadButton" class="btn btn-primary btn-block">Upload File</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div id="progressMessage" style="display: none;" class="alert alert-info text-center">Transcribing and Analyzing... Please wait.</div>
+            <div id="resultSection">
+                <!-- Result section will be updated dynamically -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#uploadForm').submit(function(e){
+            e.preventDefault();
+            var formData = new FormData($(this)[0]);
+            $('#uploadProgress').show();
+            $('#progressMessage').show(); // Show progress message
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: formData,
+                async: true,
+                xhr: function () {
+                    var xhr = new window.XMLHttpRequest();
+                    xhr.upload.addEventListener('progress', function (e) {
+                        if (e.lengthComputable) {
+                            var percentComplete = (e.loaded / e.total) * 100;
+                            $('#uploadProgress').attr('value', percentComplete);
+                        }
+                    }, false);
+                    return xhr;
+                },
+                success: function (data) {
+                    $('#uploadProgress').hide();
+                    $('#progressMessage').hide(); // Hide progress message after upload completion
+                    if (data.transcript && data.sentiment_analysis) {
+                        $('#resultSection').html('<h2 class="text-center">Transcription</h2><div id="transcription" class="alert alert-info">' + data.transcript + '</div><h2 class="text-center">Sentiment Analysis</h2><div id="sentiment-analysis" class="alert alert-success">' + data.sentiment_analysis + '</div>');
+                    } else if (data.error) {
+                        $('#resultSection').html('<div class="alert alert-danger">' + data.error + '</div>');
+                    }
+                },
+                error: function () {
+                    $('#progressMessage').hide(); // Hide progress message on error
+                    $('#uploadProgress').hide(); // Hide progress bar on error
+                    $('#resultSection').html('<div class="alert alert-danger">An error occurred during file upload and processing.</div>');
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+            return false;
+        });
+    });
+</script>
+
+</body>
+</html>
