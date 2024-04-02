@@ -67,7 +67,8 @@
                     $('#uploadProgress').hide();
                     $('#progressMessage').hide(); // Hide progress message after upload completion
                     if (data.transcript && data.sentiment_analysis) {
-                        $('#resultSection').html('<h2 class="text-center">Transcription</h2><div id="transcription" class="alert alert-info">' + data.transcript + '</div><h2 class="text-center">Sentiment Analysis</h2><div id="sentiment-analysis" class="alert alert-success">' + data.sentiment_analysis + '</div>');
+                        var transcriptWithLineBreaks = data.transcript.replace(/\n/g, '<br>');
+                        $('#resultSection').html('<h2 class="text-center">Transcription</h2><div id="transcription" class="alert alert-info">' + transcriptWithLineBreaks + '</div><h2 class="text-center">Sentiment Analysis</h2><div id="sentiment-analysis" class="alert alert-success">' + data.sentiment_analysis + '</div>');
                     } else if (data.error) {
                         $('#resultSection').html('<div class="alert alert-danger">' + data.error + '</div>');
                     }
