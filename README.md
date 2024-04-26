@@ -1,6 +1,30 @@
 # Audio Diarization and Sentiment Analysis
 This project provides a web application for audio diarization and sentiment analysis of conversations. Audio diarization is the process of segmenting and labeling an audio recording based on speaker identities, while sentiment analysis aims to extract sentiment or psychological insights from the conversation. This repository contains Python code utilizing Flask, Whisper API, OpenAI API, and Pyannote to achieve these functionalities.
 
+**Functionality:**
+- Users can upload audio files (in WAV, MP3, or M4A formats) through a web interface.
+- Upon upload, the system transcribes the audio using a speaker diarization algorithm.
+- It then performs sentiment analysis on the transcribed text.
+- Results, including the transcript and sentiment analysis, are displayed to the user.
+**Components:**
+- main.py: Contains the Flask application, defining routes for file upload and handling, transcribing audio, and performing sentiment analysis using OpenAI.
+- diarisation.py: Implements the speaker diarization algorithm using the Pyannote library. It preprocesses the audio, extracts speaker embeddings, performs clustering, and generates a transcript with speaker labels.
+- upload.html: HTML template for the upload form and result display. Utilizes JavaScript and jQuery for asynchronous file upload and progress tracking.
+**Dependencies:**
+- Flask: Web framework for Python.
+- Pyannote: Library for speaker diarization.
+- OpenAI API: Used for sentiment analysis.
+- Google Cloud Storage: Used for storing uploaded audio files.
+- FFmpeg: Required for audio preprocessing.
+- Werkzeug: Utility library for Flask.
+- Bootstrap: CSS framework for frontend styling.
+**Workflow:**
+- Users upload an audio file through the web interface.
+- The file is processed, transcribed, and analyzed asynchronously.
+- Upon completion, the transcript and sentiment analysis results are displayed to the user.
+**Deployment:**
+This Flask application is deployed on Google Cloud, access it through <a href="https://alindor-test.nw.r.appspot.com/">this link</a> 
+
 ## Installation
 Before running the application, ensure you have Python installed on your system. Additionally, install the required Python packages using pip. The required packages are listed in requirements.txt.
 As well there is archived ffmpeg file, please unzip it (if you are using Mac). Other wise you coukd download the file from [this link](https://ffbinaries.com/downloads). 
@@ -44,10 +68,6 @@ python main.py
 * scikit-learn: A machine learning library for Python.
 
 ## Final thoughts
-
-It was a very interesting assignment. Unfortunately, I have used all free credits in Google Cloud for my previous projects (from different emails, ouch). But I would definitely deploy it on App engine, amending the existing code by adding google cloud storage client and bucket for user uploads.
-The main challenge was that I had several assignments to be done within almost the same timeframe. But I managed my time accordingly.
-The problem that I faced is with speechbrain library, it was giving me the error that no library was imported. But it turned out the problem was the new version of speechbrain (i.e. >= 1.0.0) and the pyannote importing from speechbrain.inference for version 1.0 or higher, and fallbacks to speechbrain.pretrained. For that reason I pinned the speechbrain version in requirements.txt. Although while testing I was using version 1 and ammended pyannote library on my local machine.
 
 Upon finishing the project, I reflected on the following points:
 
