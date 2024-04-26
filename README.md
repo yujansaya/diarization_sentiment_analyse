@@ -2,14 +2,21 @@
 This project provides a web application for audio diarization and sentiment analysis of conversations. Audio diarization is the process of segmenting and labeling an audio recording based on speaker identities, while sentiment analysis aims to extract sentiment or psychological insights from the conversation. This repository contains Python code utilizing Flask, Whisper API, OpenAI API, and Pyannote to achieve these functionalities.
 
 **Functionality:**
-- Users can upload audio files (in WAV, MP3, or M4A formats) through a web interface.
+- Users can upload audio files (in WAV, MP3, or M4A formats) through a web interface.<img width="622" alt="Screenshot 2024-04-26 at 1 39 58 PM" src="https://github.com/yujansaya/diarization_sentiment_analyse/assets/109923065/c94e4b2a-bcbb-4f5f-905f-1cca69523a2a">
 - Upon upload, the system transcribes the audio using a speaker diarization algorithm.
+  <img width="670" alt="Screenshot 2024-04-26 at 1 27 55 PM" src="https://github.com/yujansaya/diarization_sentiment_analyse/assets/109923065/c680f343-b4f8-43ce-a737-d698e1e08250">
+<img width="698" alt="Screenshot 2024-04-26 at 1 37 46 PM" src="https://github.com/yujansaya/diarization_sentiment_analyse/assets/109923065/fd67b545-1e91-4f83-8e4e-22f222ca7780">
+
 - It then performs sentiment analysis on the transcribed text.
+  <img width="657" alt="Screenshot 2024-04-26 at 1 37 57 PM" src="https://github.com/yujansaya/diarization_sentiment_analyse/assets/109923065/9167b806-545e-43e5-88b6-6a4374184821">
+  
 - Results, including the transcript and sentiment analysis, are displayed to the user.
+  
 **Components:**
 - main.py: Contains the Flask application, defining routes for file upload and handling, transcribing audio, and performing sentiment analysis using OpenAI.
 - diarisation.py: Implements the speaker diarization algorithm using the Pyannote library. It preprocesses the audio, extracts speaker embeddings, performs clustering, and generates a transcript with speaker labels.
 - upload.html: HTML template for the upload form and result display. Utilizes JavaScript and jQuery for asynchronous file upload and progress tracking.
+  
 **Dependencies:**
 - Flask: Web framework for Python.
 - Pyannote: Library for speaker diarization.
@@ -18,10 +25,12 @@ This project provides a web application for audio diarization and sentiment anal
 - FFmpeg: Required for audio preprocessing.
 - Werkzeug: Utility library for Flask.
 - Bootstrap: CSS framework for frontend styling.
+  
 **Workflow:**
 - Users upload an audio file through the web interface.
 - The file is processed, transcribed, and analyzed asynchronously.
 - Upon completion, the transcript and sentiment analysis results are displayed to the user.
+  
 **Deployment:**
 This Flask application is deployed on Google Cloud, access it through <a href="https://alindor-test.nw.r.appspot.com/">this link</a> 
 
