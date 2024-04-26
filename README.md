@@ -49,7 +49,7 @@ git clone https://github.com/your_username/your_repository.git
 cd your_repository
 ```
 
-2. Set up your OpenAI API key by replacing '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' in main.py with your own API key.
+2. Set up your OpenAI API key in main.py with your own API key.
 
 3. Run the Flask application:
 
