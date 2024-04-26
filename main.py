@@ -5,12 +5,9 @@ from diarisation import SpeakerDiarizer
 from openai import OpenAI
 from google.cloud import storage
 
-# os.system("pip install git+https://github.com/openai/whisper.git")
 # Set up OpenAI API key
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 client = OpenAI(api_key=OPENAI_API_KEY)
-
-#os.environ["PATH"] += os.pathsep + f'/Users/zhansayayussupova/PycharmProjects/alindor/'
 
 app = Flask(__name__)
 # Configure Google Cloud Storage client
@@ -20,7 +17,6 @@ storage_client = storage.Client()
 BUCKET_NAME = 'alindor-uploads'
 bucket = storage_client.bucket(BUCKET_NAME)
 
-#os.environ["PATH"] += os.pathsep + f'gs://staging.alindor-test.appspot.com/ffmpeg'
 # Get the directory of the current file
 current_directory = os.path.dirname(os.path.abspath(__file__))
 # Specify the path to ffmpeg
@@ -28,12 +24,9 @@ ffmpeg_path = os.path.join(current_directory, 'ffmpeg')
 os.environ["PATH"] += os.pathsep + ffmpeg_path
 
 # Define the directory to store uploaded files
-#UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'wav', 'mp3', 'm4a'}  # Allowed audio file extensions
-#app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 NUMBER_SPEAKERS = 2
 diarizer = SpeakerDiarizer(num_speakers=NUMBER_SPEAKERS)
-#ffmpeg_path = os.path.join("gs://staging.alindor-test.appspot.com/ffmpeg")
 
 # Function to check if the file extension is allowed
 def allowed_file(filename):
